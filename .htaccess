@@ -1,0 +1,89 @@
+# Enable CORS headers for SharedArrayBuffer support
+<IfModule mod_headers.c>
+    # Required for SharedArrayBuffer (FFmpeg.wasm)
+    Header set Cross-Origin-Opener-Policy "same-origin"
+    Header set Cross-Origin-Embedder-Policy "require-corp"
+    
+    # Allow loading resources from CDNs
+    Header set Cross-Origin-Resource-Policy "cross-origin"
+    
+    # Standard CORS headers
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+    Header set Access-Control-Allow-Headers "Content-Type"
+</IfModule>
+
+# Performance optimizations
+<IfModule mod_deflate.c>
+    # Compress text files
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE application/xml
+</IfModule>
+
+# Browser caching
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # Images
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    
+    # CSS and JavaScript
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    
+    # Fonts
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType application/font-woff "access plus 1 year"
+    ExpiresByType application/font-woff2 "access plus 1 year"
+    
+    # Documents
+    ExpiresByType application/pdf "access plus 1 month"
+    
+    # HTML
+    ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# Security headers
+<IfModule mod_headers.c>
+    # Prevent clickjacking
+    Header set X-Frame-Options "SAMEORIGIN"
+    
+    # XSS protection
+    Header set X-XSS-Protection "1; mode=block"
+    
+    # Prevent MIME sniffing
+    Header set X-Content-Type-Options "nosniff"
+    
+    # Referrer policy
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# File upload limits (if supported by host)
+<IfModule mod_php.c>
+    php_value upload_max_filesize 50M
+    php_value post_max_size 50M
+    php_value max_execution_time 300
+    php_value max_input_time 300
+</IfModule>
+
+# Disable directory browsing
+Options -Indexes
+
+# Default documents
+DirectoryIndex index.html index.htm index.php
+
+# UTF-8 encoding
+AddDefaultCharset UTF-8

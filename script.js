@@ -11,7 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentFile = null;
 
     const { createFFmpeg, fetchFile } = FFmpeg;
-    const ffmpeg = createFFmpeg({ log: true });
+    const ffmpeg = createFFmpeg({ 
+        log: true,
+        corePath: 'https://unpkg.com/@ffmpeg/core@0.9.0/dist/ffmpeg-core.js'
+    });
 
     resetUI(); // Ensure initial state is correct
 
@@ -145,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } catch (error) {
             console.error('Conversion error:', error);
-            alert('An error occurred during conversion.');
+            alert('An error occurred during conversion: ' + error.message);
         } finally {
             hideLoading();
         }
@@ -218,6 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (error) {
             console.error("Audio conversion error:", error);
             alert(`An error occurred during audio conversion: ${error.message}`);
+            throw error;
         }
     }
 
