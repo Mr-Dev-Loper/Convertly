@@ -3,46 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Convertly - Modern File Converter</title>
+    <title>Convertly - By Muhammad Tayyab</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
-    <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.9.7/dist/ffmpeg.min.js"></script>
+    <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.10.0/dist/ffmpeg.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.16/mammoth.browser.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Convertly</h1>
-            <p>Your modern file conversion tool</p>
-        </header>
-        <main>
-            <div class="upload-area">
-                <input type="file" id="file-input" hidden>
-                <label for="file-input" class="upload-label">
-                    <div class="upload-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                            <path fill-rule="evenodd" d="M10.5 3.75a2.25 2.25 0 00-2.25 2.25v10.19l-1.72-1.72a.75.75 0 00-1.06 1.06l3 3a.75.75 0 001.06 0l3-3a.75.75 0 10-1.06-1.06l-1.72 1.72V6a2.25 2.25 0 00-2.25-2.25z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <p>Drag & drop your file here or click to upload</p>
-                </label>
+    <div class="background-objects">
+        <div class="object object-1"></div>
+        <div class="object object-2"></div>
+        <div class="object object-3"></div>
+        <div class="object object-4"></div>
+        <div class="object object-5"></div>
+    </div>
+
+    <header class="main-header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="logo.png" alt="Convertly Logo">
             </div>
-            <div id="preview-area" class="hidden"></div>
-            <div id="conversion-options" class="hidden">
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#converter-section">Converter</a></li>
+                    <li><a href="#about-section">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="converter-section" id="converter-section">
+            <div class="converter-header">
+                <h1>File Converter</h1>
+                <p>Easily convert files from one format to another, online.</p>
+            </div>
+            <div class="upload-area-main">
+                <div class="upload-area">
+                    <input type="file" id="file-input" hidden>
+                    <label for="file-input" class="upload-label">
+                        <div class="upload-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                                <path fill-rule="evenodd" d="M10.5 3.75a2.25 2.25 0 00-2.25 2.25v10.19l-1.72-1.72a.75.75 0 00-1.06 1.06l3 3a.75.75 0 001.06 0l3-3a.75.75 0 10-1.06-1.06l-1.72 1.72V6a2.25 2.25 0 00-2.25-2.25z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <p>Drag & drop your file here or click to upload</p>
+                    </label>
+                </div>
+                <div id="preview-area" class="hidden"></div>
+            </div>
+
+            <div id="conversion-options" class="hidden container">
                 <h2>Convert to:</h2>
                 <div class="options-grid">
                     <!-- Conversion options will be dynamically inserted here -->
                 </div>
             </div>
-            <div class="download-area hidden">
+            <div class="download-area hidden container">
                 <button id="download-btn">Download Converted File</button>
             </div>
-            <div id="loading-indicator" class="hidden">
+            <div id="loading-indicator" class="hidden container">
                 <div class="spinner"></div>
                 <p id="loading-message">Converting, please wait...</p>
             </div>
-        </main>
-    </div>
+        </section>
+
+        <section class="description-section container" id="about-section">
+            <h2>About Convertly and Its Creator</h2>
+            <p>Welcome to Convertly, the ultimate online tool designed to simplify your file conversion needs. In today's fast-paced digital world, dealing with various file formats can often be a hassle. Convertly was born out of a desire to eliminate this frustration, providing a seamless, efficient, and user-friendly platform for all your conversion tasks. From documents to images and audio, our goal is to make file transformation as effortless as possible.</p>
+
+            <p>Convertly stands out with its modern, animated interface that not only looks good but also enhances your user experience. We believe that powerful tools should also be a pleasure to use. Our intelligent system automatically detects the type of file you upload and suggests the most relevant conversion options, saving you time and guesswork. This smart approach ensures that you always have the right tools at your disposal, whether you're a professional needing quick document changes or a casual user looking to adapt media files.</p>
+
+            <p>Our commitment to privacy and speed is paramount. All document and image conversions are handled client-side, directly within your browser. This means your sensitive files never leave your computer, ensuring maximum security and lightning-fast processing. For more complex tasks like audio conversion, we leverage advanced technologies like FFmpeg.wasm, bringing powerful server-side capabilities directly to your browser. While this might mean a slightly larger initial load for the audio converter, the benefits of client-side processing and enhanced privacy are well worth it.</p>
+
+            <p>The journey of Convertly began with a vision from **Muhammad Tayyab**. As a passionate software engineer, Muhammad recognized the common pain points users faced with existing file converters – clunky interfaces, slow processing, and privacy concerns. He envisioned a tool that was not only powerful and versatile but also aesthetically pleasing and incredibly easy to use. With a keen eye for modern design and a deep understanding of web technologies, Muhammad embarked on creating Convertly to bring this vision to life.</p>
+
+            <p>Muhammad Tayyab poured countless hours into developing Convertly, focusing on a clean codebase, robust functionality, and an engaging user experience. His dedication to leveraging the latest web standards, including HTML5, CSS3 for animations, and advanced JavaScript for client-side processing, is evident in every aspect of the platform. The integration of libraries like PDF-Lib for reliable document handling and FFmpeg.wasm for cutting-edge audio conversion showcases his commitment to providing top-tier performance and versatility.</p>
+
+            <p>Beyond the technical aspects, Muhammad's philosophy for Convertly is rooted in user empowerment. He believes that everyone should have access to tools that simplify their digital lives without compromising on security or quality. This ethos is reflected in Convertly's intuitive design, where every feature is crafted to be accessible and straightforward. From the drag-and-drop upload functionality to the dynamic conversion options, every element is designed with the user in mind.</p>
+
+            <p>Looking ahead, Convertly will continue to evolve. Muhammad Tayyab is dedicated to continuously improving the platform, adding new features, supporting more file formats, and enhancing performance based on user feedback. The goal is to make Convertly the undisputed leader in online file conversion, a tool that users can trust and rely on for all their digital transformation needs. Thank you for choosing Convertly, and we hope you enjoy the seamless experience crafted with passion and precision by Muhammad Tayyab.</p>
+        </section>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>

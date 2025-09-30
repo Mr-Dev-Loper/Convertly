@@ -7,7 +7,7 @@
     # Allow loading resources from CDNs
     Header set Cross-Origin-Resource-Policy "cross-origin"
     
-    # Standard CORS headers
+    # Standard CORS headers (re-added for CDN compatibility)
     Header set Access-Control-Allow-Origin "*"
     Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
     Header set Access-Control-Allow-Headers "Content-Type"

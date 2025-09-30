@@ -10,10 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const loadingMessage = document.getElementById('loading-message');
     let currentFile = null;
 
+    const backgroundObjects = document.querySelectorAll('.background-objects .object');
+
     const { createFFmpeg, fetchFile } = FFmpeg;
     const ffmpeg = createFFmpeg({ 
         log: true,
-        corePath: 'https://unpkg.com/@ffmpeg/core@0.9.0/dist/ffmpeg-core.js'
+        corePath: './ffmpeg/ffmpeg-core.js' // Use local ffmpeg-core
     });
 
     resetUI(); // Ensure initial state is correct
@@ -258,4 +260,18 @@ document.addEventListener('DOMContentLoaded', () => {
         uploadArea.classList.remove('hidden');
         fileInput.value = '';
     }
+
+    // Mouse interaction for background objects
+    document.addEventListener('mousemove', (e) => {
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+
+        backgroundObjects.forEach((object, index) => {
+            const speed = (index + 1) * 0.02; // Different speeds for parallax effect
+            const offsetX = (mouseX - window.innerWidth / 2) * speed;
+            const offsetY = (mouseY - window.innerHeight / 2) * speed;
+
+            object.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+        });
+    });
 });
