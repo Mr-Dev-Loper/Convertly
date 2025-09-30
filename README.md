@@ -2,7 +2,7 @@
 
 **Convertly** is a simple yet powerful all-in-one **file converter** that allows you to seamlessly convert files between multiple formats — including **documents, images, and audio files** — with just a few clicks.  
 
-> 🧠 Created with ❤️ by [Muhammad Tayyab Me](https://github.com/)  
+> 🧠 Created with ❤️ by [Muhammad Tayyab Me](https://github.com/Mr-Dev-Loper)  
 
 ---
 
